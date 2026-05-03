@@ -1,5 +1,13 @@
 import subprocess
 import socket
+import jsonify
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def local_ip():
+    return jsonify({"ip": get_local_ip()})
 
 def get_local_ip():
     hostname = socket.gethostname()
@@ -22,4 +30,6 @@ def check_ip_addr(addr_lst):
     return results
 
 scan_results = check_ip_addr(input('Please enter IP addresses separated by commas: ').split(','))
+
+print(scan_results)
 
