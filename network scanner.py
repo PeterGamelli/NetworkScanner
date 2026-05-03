@@ -1,4 +1,14 @@
 import subprocess
+import socket
+
+def get_local_ip():
+    hostname = socket.gethostname()
+    local_ip = socket.gethostbyname(hostname)
+    return local_ip
+
+print(f"Local IP: {get_local_ip()}")
+
+
 
 def check_ip_addr(addr_lst): 
     results = []
@@ -11,6 +21,5 @@ def check_ip_addr(addr_lst):
             results.append('no')
     return results
 
-n = check_ip_addr(input('Please enter IP addresses separated by commas: ').split(','))
+scan_results = check_ip_addr(input('Please enter IP addresses separated by commas: ').split(','))
 
-print(n)
