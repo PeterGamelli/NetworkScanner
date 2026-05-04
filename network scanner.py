@@ -19,6 +19,10 @@ def index():
 def local_ip():
     return jsonify({"ip": get_local_ip()})
 
+@app.route("/api/ip-input")
+def ipinput():
+    return jsonify({"ip": get_local_ip()})
+
 
 def check_ip_addr(addr_lst):
     results = []
