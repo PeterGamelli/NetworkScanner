@@ -4,16 +4,13 @@ from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
 
-
 def get_local_ip():
     hostname = socket.gethostname()
     return socket.gethostbyname(hostname)
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/api/local-ip")
 def local_ip():
@@ -36,6 +33,5 @@ def check_ip_addr(addr_lst):
         results.append(completed.returncode == 0)
     return results
 
-
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

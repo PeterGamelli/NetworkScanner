@@ -22,10 +22,11 @@ async function getLocalIp() {
 
 getLocalIp();
 
-
 async function sendIpInput() {
   const input = document.getElementById("ip-input");
-  if (!input) return;
+  if (!input) {
+    return;
+  }
 
   const ip = input.value;
 
@@ -33,9 +34,9 @@ async function sendIpInput() {
     const response = await fetch("/api/ip-input", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ ip: ip })
+      body: JSON.stringify({ ip }),
     });
 
     if (!response.ok) {
@@ -44,7 +45,6 @@ async function sendIpInput() {
 
     const result = await response.json();
     console.log(result);
-
   } catch (error) {
     console.error(error.message);
   }
