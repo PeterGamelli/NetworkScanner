@@ -44,7 +44,7 @@ async function sendIpInput() {
     }
 
     const result = await response.json();
-    console.log(result);
+    document.getElementById("ip-results").textContent = result.alive;
   } catch (error) {
     console.error(error.message);
   }

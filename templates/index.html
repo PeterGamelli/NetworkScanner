@@ -14,8 +14,10 @@
 
   <form>
     <input type="text" id="ip-input" placeholder="192.168.1.1">
-    <button onclick="sendIpInput()">Submit</button>
+    <button type="button" onclick="sendIpInput()">Submit</button>
   </form>
+
+  <p id="ip-results">Results will appear here.</p>
 
   <script src="/static/app.js" defer></script>
 {% endblock %}

@@ -1,6 +1,6 @@
 import subprocess
 import socket
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request
 
 app = Flask(__name__)
 
@@ -16,10 +16,13 @@ def index():
 def local_ip():
     return jsonify({"ip": get_local_ip()})
 
-@app.route("/api/ip-input")
+@app.route("/api/ip-input", methods=["POST"])
 def ipinput():
-    return jsonify({"ip": get_local_ip()})
+    data = request.get_json()
+    ip = data.get("ip")
+    result = check_ip_addr([ip])
 
+    return jsonify({"alive": result[0]})
 
 def check_ip_addr(addr_lst):
     results = []
